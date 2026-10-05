@@ -10,7 +10,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-ROOT = REPO_ROOT / "plugins" / "zep-memory"
+ROOT = REPO_ROOT / "plugins" / "zep-context"
 PLUGIN_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
 MCP_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json"
 NAME_RE = re.compile(r"^(?!.*(?:--|\.\.))[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$")
@@ -162,7 +162,7 @@ def main() -> int:
         return 1
     print(
         "OK — Agent Plugins 1.0.0 manifest and MCP configuration "
-        "(plugins/zep-memory)"
+        "(plugins/zep-context)"
     )
     return 0
 

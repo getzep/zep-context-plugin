@@ -1,13 +1,13 @@
-# Zep Memory
+# Zep Context
 
 Use Zep as long-term memory for knowledge work in **Cursor**, **Claude Desktop
 Chat**, **Claude Cowork**, and **ChatGPT Work**.
 
 Bundles:
 
-- The `zep-memory` skill — how to use Zep for user memory, threads, and
-  standalone graphs via LLM-mediated Memory MCP tool calls
-- The Zep Memory MCP server at `https://api.getzep.com/mcp`
+- The `zep-context` skill — how to use Zep for user memory, threads, and
+  standalone graphs via LLM-mediated Context MCP tool calls
+- The Zep Context MCP Server at `https://api.getzep.com/mcp`
 
 ## Terms and privacy
 
@@ -20,8 +20,8 @@ service and privacy policy for this plugin.
 The plugin files (skill, manifests, and MCP config) are also licensed under the
 [Apache License 2.0](../../LICENSE).
 
-This plugin connects Cursor (and other supported hosts) to Zep’s Memory MCP
-server. You sign in with OAuth. After that, the assistant can search and add to
+This plugin connects Cursor (and other supported hosts) to Zep’s Context MCP
+Server. You sign in with OAuth. After that, the assistant can search and add to
 your Zep memory — your user graph, and standalone graphs when your project
 enables them. That API and memory data is handled under the Privacy Policy
 above.
@@ -42,18 +42,18 @@ corrections, procedures, decisions, and feedback without waiting to be asked.
 Standalone graphs hold project and company-wide knowledge; search those with
 `list_graphs` then `search_graph_in` when the project enables them.
 
-Install and product docs: [Memory MCP server](https://help.getzep.com/memory-mcp-server).
+Install and product docs: [Context MCP Server](https://help.getzep.com/context-mcp-server).
 
 ## Configuration
 
 No API keys, plugin variables, or other secrets belong in this package. Auth is
 client-managed OAuth against `https://api.getzep.com/mcp`.
 
-The first Memory MCP call should prompt for Zep sign-in (work email → identity
-provider → project). You need a Zep account whose project has Memory MCP
+The first Context MCP call should prompt for Zep sign-in (work email → identity
+provider → project). You need a Zep account whose project has Context MCP
 enabled.
 
 ## Support
 
-- Docs: [Memory MCP server](https://help.getzep.com/memory-mcp-server)
-- Issues: [getzep/zep-memory-plugin](https://github.com/getzep/zep-memory-plugin/issues)
+- Docs: [Context MCP Server](https://help.getzep.com/context-mcp-server)
+- Issues: [getzep/zep-context-plugin](https://github.com/getzep/zep-context-plugin/issues)

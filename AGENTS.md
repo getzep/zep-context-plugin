@@ -1,51 +1,51 @@
-# Zep Memory plugin maintainer instructions
+# Zep Context plugin maintainer instructions
 
 This repository hosts marketplace catalogs at the root and **one plugin
-package** at `plugins/zep-memory/`. That directory is the plugin root for
+package** at `plugins/zep-context/`. That directory is the plugin root for
 Agent Plugins 1.0.0 (including Cursor), Claude Desktop Chat / Cowork, and
 ChatGPT Work.
 
 ## Package architecture
 
-- Keep a single plugin root: `plugins/zep-memory/`. Do not put `plugin.json`,
+- Keep a single plugin root: `plugins/zep-context/`. Do not put `plugin.json`,
   `mcp.json`, `.mcp.json`, or `skills/` at the repository root (ChatGPT
   rejects marketplace `source.path` of `"./"`).
-- Keep one skill file: `plugins/zep-memory/skills/zep-memory/SKILL.md`.
+- Keep one skill file: `plugins/zep-context/skills/zep-context/SKILL.md`.
   Do not symlink it outside the plugin root — Codex/ChatGPT drop outbound
   symlinks on install (openai/codex#24770).
-- Keep the plugin name `zep-memory` and version identical in:
-  - `plugins/zep-memory/plugin.json`
-  - `plugins/zep-memory/.claude-plugin/plugin.json`
-  - `plugins/zep-memory/.codex-plugin/plugin.json`
-- Keep `plugins/zep-memory/plugin.json` and `plugins/zep-memory/mcp.json`
+- Keep the plugin name `zep-context` and version identical in:
+  - `plugins/zep-context/plugin.json`
+  - `plugins/zep-context/.claude-plugin/plugin.json`
+  - `plugins/zep-context/.codex-plugin/plugin.json`
+- Keep `plugins/zep-context/plugin.json` and `plugins/zep-context/mcp.json`
   conformant to Agent Plugins 1.0.0.
-- Preserve `plugins/zep-memory/.claude-plugin/plugin.json` and
-  `plugins/zep-memory/.mcp.json`; Claude support must not depend on Claude
+- Preserve `plugins/zep-context/.claude-plugin/plugin.json` and
+  `plugins/zep-context/.mcp.json`; Claude support must not depend on Claude
   adopting the portable format.
-- Preserve `plugins/zep-memory/.codex-plugin/plugin.json`; OpenAI support
+- Preserve `plugins/zep-context/.codex-plugin/plugin.json`; OpenAI support
   must not depend on OpenAI adopting the portable format.
 - `.codex-plugin/` is the package format used by ChatGPT Work; this plugin is not
   positioned for Codex coding workflows.
-- Keep every `.mcp.json` and `mcp.json` pointed at the production Zep Memory MCP
+- Keep every `.mcp.json` and `mcp.json` pointed at the production Zep Context MCP Server
   endpoint `https://api.getzep.com/mcp` (HTTP / `streamable-http` as required).
 - Cursor loads the Agent Plugins package as-is. Do not add
-  `plugins/zep-memory/.cursor-plugin/` unless we need Cursor-only components
+  `plugins/zep-context/.cursor-plugin/` unless we need Cursor-only components
   (rules, agents, commands, hooks, or variables). Auth stays client-managed
   OAuth; do not put API keys or `${VAR}` headers in `mcp.json`.
-- Keep `plugins/zep-memory/assets/logo.png` and reference it from
+- Keep `plugins/zep-context/assets/logo.png` and reference it from
   `.cursor-plugin/marketplace.json` (`logo`: `assets/logo.png`). Agent Plugins
   `plugin.json` has no logo field.
 - Keep Terms of Service and Privacy Policy links highly visible in
-  `README.md` and `plugins/zep-memory/README.md`, pointing at
+  `README.md` and `plugins/zep-context/README.md`, pointing at
   https://www.getzep.com/legal/terms/ and
   https://www.getzep.com/legal/privacy/. Do not invent a plugin-only legal
-  page; this plugin uses the Zep Memory API.
+  page; this plugin uses the Zep Context MCP Server.
 - This repository hosts its own marketplace catalogs
   (`.claude-plugin/marketplace.json`, `.agents/plugins/marketplace.json`,
   and `.cursor-plugin/marketplace.json`). Plugin `source` entries must stay
   same-repo paths so install does not require a second GitHub clone. Claude
-  and ChatGPT catalogs point at `./plugins/zep-memory`; the Cursor catalog
-  uses `metadata.pluginRoot` `plugins` and `source` `zep-memory`.
+  and ChatGPT catalogs point at `./plugins/zep-context`; the Cursor catalog
+  uses `metadata.pluginRoot` `plugins` and `source` `zep-context`.
 
 ## Releasing
 
@@ -60,7 +60,7 @@ For runtime content changes (skill, manifests, MCP package config):
    `claude plugin validate .` checks the catalog:
 
    ```bash
-   claude plugin validate plugins/zep-memory/.claude-plugin/plugin.json --strict
+   claude plugin validate plugins/zep-context/.claude-plugin/plugin.json --strict
    claude plugin validate . --strict
    ```
 
@@ -71,7 +71,7 @@ For runtime content changes (skill, manifests, MCP package config):
 6. Open a PR and merge to the default branch.
 
 There is no npm publish, GitHub Release, or required git tag for this package.
-The Memory MCP server at `https://api.getzep.com/mcp` ships separately —
+The Context MCP Server at `https://api.getzep.com/mcp` ships separately —
 server-only changes do not require a plugin version bump unless package
 metadata or the skill change too.
 
@@ -100,8 +100,8 @@ manual ZIP marketplace and/or a private GitHub-synced marketplace.
 #### This repository as Claude marketplace
 
 ```bash
-claude plugin marketplace add getzep/zep-memory-plugin
-claude plugin install zep-memory@zep-memory
+claude plugin marketplace add getzep/zep-context-plugin
+claude plugin install zep-context@zep-context
 ```
 
 Marketplace entries must stay free of `version`; the host resolves the release
@@ -123,7 +123,7 @@ Not the universal public Plugins Directory.
   package; re-share or refresh the local install as needed.
 - **Local / repo / personal marketplaces** (`.agents/plugins/marketplace.json`
   or git-backed marketplace sources): the entry's `source.path` must be
-  `./plugins/zep-memory` (not `"./"`). Update the package or marketplace
+  `./plugins/zep-context` (not `"./"`). Update the package or marketplace
   source, then restart / refresh so the host reloads. OpenAI caches installed
   copies by marketplace + name + version.
 
@@ -134,24 +134,24 @@ Official public listing. Submit through the OpenAI plugin submission portal
 `version`, release notes, resubmit, approval, then Publish again. Merging to
 GitHub does not update the live directory listing by itself. Skills may be
 snapshotted at review time; live MCP tool calls still hit the production
-Memory MCP endpoint.
+Context MCP Server endpoint.
 
 #### Cursor — local install and team marketplace
 
-Cursor loads Agent Plugins from `plugins/zep-memory/` with no extra per-plugin
+Cursor loads Agent Plugins from `plugins/zep-context/` with no extra per-plugin
 manifest. Local development:
 
 ```bash
 mkdir -p ~/.cursor/plugins/local
-ln -s "$(pwd)/plugins/zep-memory" ~/.cursor/plugins/local/zep-memory
+ln -s "$(pwd)/plugins/zep-context" ~/.cursor/plugins/local/zep-context
 ```
 
 Reload the Cursor window, then confirm the skill and MCP server under
-**Customize**. The Memory MCP server uses OAuth; the first tool call should
+**Customize**. The Context MCP Server uses OAuth; the first tool call should
 open Zep sign-in.
 
 - **Team marketplace:** import this GitHub repository. Cursor reads
-  `.cursor-plugin/marketplace.json` and resolves `source` `zep-memory` under
+  `.cursor-plugin/marketplace.json` and resolves `source` `zep-context` under
   `pluginRoot` `plugins`.
 - **Official Cursor Marketplace:** submit this GitHub repository at
   [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish)

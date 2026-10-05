@@ -1,16 +1,26 @@
 # Changelog
 
-All notable changes to the Zep Memory plugin.
+All notable changes to the Zep Context plugin.
 
-## Unreleased
+## 0.3.0 — 2026-10-05
 
+- Rename the plugin from Zep Memory (`zep-memory`) to Zep Context
+  (`zep-context`). The repository is now `getzep/zep-context-plugin`, the
+  plugin root is `plugins/zep-context/`, and the skill and MCP server are both
+  named `zep-context`.
+- Existing installs do not update in place because the plugin and marketplace
+  names changed. Remove the `zep-memory` plugin and marketplace, then add the
+  `getzep/zep-context-plugin` marketplace and install
+  `zep-context@zep-context`.
+- Point documentation links at the Context MCP Server docs
+  (`https://help.getzep.com/context-mcp-server`).
 - Host Claude and ChatGPT Work marketplace catalogs in this repository with
   same-repo plugin sources. Install with
-  `claude plugin marketplace add getzep/zep-memory-plugin` then
-  `claude plugin install zep-memory@zep-memory`.
+  `claude plugin marketplace add getzep/zep-context-plugin` then
+  `claude plugin install zep-context@zep-context`.
 - Document Cursor as an Agent Plugins host (no extra per-plugin Cursor
   manifest). Add `.cursor-plugin/marketplace.json` so this repo can be
-  imported as a Cursor team marketplace pointing at `plugins/zep-memory`.
+  imported as a Cursor team marketplace pointing at `plugins/zep-context`.
 - Prepare the public Cursor Marketplace listing: commit `assets/logo.png`,
   document usage and OAuth configuration, and put Zep’s Terms of Service and
   Privacy Policy links at the top of the repo and plugin READMEs.

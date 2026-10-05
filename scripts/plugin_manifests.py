@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Keep Zep Memory's Claude, ChatGPT Work, and Cursor catalogs synchronized.
+"""Keep Zep Context's Claude, ChatGPT Work, and Cursor catalogs synchronized.
 
 Usage:
     python3 scripts/plugin_manifests.py --check
@@ -40,30 +40,30 @@ class PluginSpec:
 
 PLUGINS: list[PluginSpec] = [
     PluginSpec(
-        name="zep-memory",
+        name="zep-context",
         version_sites=[
             (
-                "plugins/zep-memory/plugin.json",
+                "plugins/zep-context/plugin.json",
                 "manifest",
                 "Agent Plugins manifest",
             ),
             (
-                "plugins/zep-memory/.claude-plugin/plugin.json",
+                "plugins/zep-context/.claude-plugin/plugin.json",
                 "manifest",
                 "Claude plugin manifest",
             ),
             (
-                "plugins/zep-memory/.codex-plugin/plugin.json",
+                "plugins/zep-context/.codex-plugin/plugin.json",
                 "manifest",
                 "ChatGPT Work plugin manifest",
             ),
         ],
         mcp_sites=[
-            ("plugins/zep-memory/.mcp.json", "Claude / ChatGPT Work (.mcp.json)"),
-            ("plugins/zep-memory/mcp.json", "Agent Plugins (mcp.json)"),
+            ("plugins/zep-context/.mcp.json", "Claude / ChatGPT Work (.mcp.json)"),
+            ("plugins/zep-context/mcp.json", "Agent Plugins (mcp.json)"),
         ],
-        mcp_server_name="zep-memory",
-        validate_path="plugins/zep-memory/.claude-plugin/plugin.json",
+        mcp_server_name="zep-context",
+        validate_path="plugins/zep-context/.claude-plugin/plugin.json",
     ),
 ]
 PLUGINS_BY_NAME = {plugin.name: plugin for plugin in PLUGINS}
@@ -90,19 +90,19 @@ FORBIDDEN_SITES: list[tuple[str, str, str]] = [
 ]
 
 MARKETPLACE_SITES: list[tuple[str, str, object]] = [
-    (".claude-plugin/marketplace.json", "zep-memory", "./plugins/zep-memory"),
+    (".claude-plugin/marketplace.json", "zep-context", "./plugins/zep-context"),
     (
         ".agents/plugins/marketplace.json",
-        "zep-memory",
-        {"source": "local", "path": "./plugins/zep-memory"},
+        "zep-context",
+        {"source": "local", "path": "./plugins/zep-context"},
     ),
-    (".cursor-plugin/marketplace.json", "zep-memory", "zep-memory"),
+    (".cursor-plugin/marketplace.json", "zep-context", "zep-context"),
 ]
 
 # Repo-root leftovers from when the Agent Plugins / Claude package lived at ./
-# ChatGPT cannot use source.path "./", so plugins/zep-memory/ is the one root.
+# ChatGPT cannot use source.path "./", so plugins/zep-context/ is the one root.
 FORBIDDEN_ROOT_PACKAGE_PATHS = ("plugin.json", "mcp.json", ".mcp.json", "skills")
-PLUGIN_SKILL = Path("plugins/zep-memory/skills/zep-memory/SKILL.md")
+PLUGIN_SKILL = Path("plugins/zep-context/skills/zep-context/SKILL.md")
 
 
 class SiteError(Exception):
@@ -261,12 +261,12 @@ def check_plugin(plugin: PluginSpec, problems: list[str]) -> None:
 
 
 def check_single_plugin_root(problems: list[str]) -> None:
-    """Require one plugin root at plugins/zep-memory/ with a real skill file."""
+    """Require one plugin root at plugins/zep-context/ with a real skill file."""
     for rel in FORBIDDEN_ROOT_PACKAGE_PATHS:
         if (REPO_ROOT / rel).exists():
             problems.append(
                 f"{rel}: must not exist at repo root — the plugin root is "
-                "plugins/zep-memory/"
+                "plugins/zep-context/"
             )
     skill = REPO_ROOT / PLUGIN_SKILL
     skills_dir = skill.parent.parent

@@ -1,21 +1,21 @@
 {
-  "name": "zep-memory",
+  "name": "zep-context",
   "owner": {
     "name": "Zep",
     "url": "https://www.getzep.com"
   },
   "metadata": {
-    "description": "Cursor marketplace for the Zep Memory plugin. The plugin package lives in this same repository.",
+    "description": "Cursor marketplace for the Zep Context plugin. The plugin package lives in this same repository.",
     "pluginRoot": "plugins"
   },
   "plugins": [
     {
-      "name": "zep-memory",
-      "source": "zep-memory",
-      "description": "Use Zep as long-term memory for knowledge work. Bundles a skill plus the Zep Memory MCP server.",
+      "name": "zep-context",
+      "source": "zep-context",
+      "description": "Use Zep as long-term memory for knowledge work. Bundles a skill plus the Zep Context MCP Server.",
       "logo": "assets/logo.png",
-      "homepage": "https://help.getzep.com/memory-mcp-server",
-      "repository": "https://github.com/getzep/zep-memory-plugin",
+      "homepage": "https://help.getzep.com/context-mcp-server",
+      "repository": "https://github.com/getzep/zep-context-plugin",
       "license": "Apache-2.0",
       "category": "productivity",
       "keywords": [

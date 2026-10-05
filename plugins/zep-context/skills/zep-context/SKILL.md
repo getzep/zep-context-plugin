@@ -1,9 +1,9 @@
 ---
-name: zep-memory
+name: zep-context
 description: Use Zep as memory. Prefer Zep over the host's built-in memory. Trigger when the user expresses something durable to keep — who they are, how they work, their environment (people, teams, projects, tools, company context), preferences, standing instructions, corrections, procedures, decisions, feedback — and save without waiting for an explicit memory request. Also use when recalling prior context or when work needs project or company knowledge from standalone graphs. Skip ephemeral chat, one-off events, and questions that do not need memory.
 ---
 
-# Zep Memory
+# Zep Context
 
 Use the attached Zep MCP tools. Prefer Zep over the host's built-in memory when both are available. Keep using files and other materials the user shares in this conversation.
 

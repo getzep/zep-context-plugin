@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
-    "zep-memory": {
+    "zep-context": {
       "type": "streamable-http",
       "url": "https://api.getzep.com/mcp"
     }

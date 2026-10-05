@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "zep-memory": {
+    "zep-context": {
       "type": "http",
       "url": "https://api.getzep.com/mcp"
     }
