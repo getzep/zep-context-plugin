@@ -1,17 +1,17 @@
 {
-  "name": "zep-memory",
+  "name": "zep-context",
   "owner": {
     "name": "Zep",
     "url": "https://www.getzep.com"
   },
   "plugins": [
     {
-      "name": "zep-memory",
+      "name": "zep-context",
       "source": {
         "source": "local",
-        "path": "./plugins/zep-memory"
+        "path": "./plugins/zep-context"
       },
-      "description": "Long-term memory for knowledge work via the Zep Memory MCP server."
+      "description": "Long-term memory for knowledge work via the Zep Context MCP Server."
     }
   ]
 }

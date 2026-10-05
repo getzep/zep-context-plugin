@@ -1,4 +1,4 @@
-# Zep Memory
+# Zep Context
 
 Knowledge-work plugin for **Claude Desktop Chat**, **Claude Cowork**,
 **ChatGPT Work**, and **Cursor**. Not positioned for Claude Code, Codex, or
@@ -6,9 +6,9 @@ other coding-agent CLIs.
 
 Bundles:
 
-- The `zep-memory` skill — how to use Zep for user memory, threads, and
-  standalone graphs via LLM-mediated Memory MCP tool calls
-- The Zep Memory MCP server at `https://api.getzep.com/mcp`
+- The `zep-context` skill — how to use Zep for user memory, threads, and
+  standalone graphs via LLM-mediated Context MCP tool calls
+- The Zep Context MCP Server at `https://api.getzep.com/mcp`
 
 ## Terms and privacy
 
@@ -21,7 +21,7 @@ service and privacy policy for this plugin.
 The plugin files (skill, manifests, and MCP config) are also licensed under the
 [Apache License 2.0](LICENSE).
 
-This plugin connects the host to Zep’s Memory MCP server. You sign in with
+This plugin connects the host to Zep’s Context MCP Server. You sign in with
 OAuth. After that, the assistant can search and add to your Zep memory — your
 user graph, and standalone graphs when your project enables them. That API and
 memory data is handled under the Privacy Policy above.
@@ -42,21 +42,21 @@ corrections, procedures, decisions, and feedback without waiting to be asked.
 Standalone graphs hold project and company-wide knowledge; search those with
 `list_graphs` then `search_graph_in` when the project enables them.
 
-Install and product docs: [Memory MCP server](https://help.getzep.com/memory-mcp-server).
+Install and product docs: [Context MCP Server](https://help.getzep.com/context-mcp-server).
 
 ## Configuration
 
 No API keys, plugin variables, or other secrets belong in this repository. Auth
 is client-managed OAuth against `https://api.getzep.com/mcp`.
 
-The first Memory MCP call should prompt for Zep sign-in (work email → identity
-provider → project). You need a Zep account whose project has Memory MCP
+The first Context MCP call should prompt for Zep sign-in (work email → identity
+provider → project). You need a Zep account whose project has Context MCP
 enabled.
 
 ## Support
 
-- Docs: [Memory MCP server](https://help.getzep.com/memory-mcp-server)
-- Issues: [getzep/zep-memory-plugin](https://github.com/getzep/zep-memory-plugin/issues)
+- Docs: [Context MCP Server](https://help.getzep.com/context-mcp-server)
+- Issues: [getzep/zep-context-plugin](https://github.com/getzep/zep-context-plugin/issues)
 
 ## Product intent
 
@@ -67,15 +67,15 @@ enabled.
   distribution, and Cursor local / team-marketplace install; public Cursor
   Marketplace listing is a separate Cursor review after submitting this
   repository
-- Docs follow-up: install instructions on the Memory MCP docs page
+- Docs follow-up: install instructions on the Context MCP Server docs page
 
 ## Packaging note
 
-`plugins/zep-memory/` is the **one plugin root** (ChatGPT cannot install a
+`plugins/zep-context/` is the **one plugin root** (ChatGPT cannot install a
 marketplace `source.path` of `"./"`). That directory conforms to
 [Agent Plugins 1.0.0](https://agent-plugins.org/): `plugin.json` identifies the
 portable package, `skills/` contains the skill, and `mcp.json` declares
-the Memory MCP server using the standard `streamable-http` transport.
+the Context MCP Server using the standard `streamable-http` transport.
 
 Cursor loads that Agent Plugins package as-is. Claude and OpenAI compatibility
 does not depend on either vendor adopting the standard. The same folder also
@@ -87,12 +87,34 @@ not mean this plugin targets Codex as a coding product.
 ## Repository and distribution
 
 This repository is the catalog plus that one package. Marketplace entries
-point at `./plugins/zep-memory` (Claude and ChatGPT Work) or `plugins/zep-memory`
+point at `./plugins/zep-context` (Claude and ChatGPT Work) or `plugins/zep-context`
 (Cursor, via `pluginRoot`).
 
+### Upgrade from zep-memory
+
+Existing installs do not update in place because the plugin and marketplace
+names changed. Remove the old plugin and marketplace, then add the new
+marketplace and install the new plugin:
+
 ```bash
-claude plugin marketplace add getzep/zep-memory-plugin
-claude plugin install zep-memory@zep-memory
+claude plugin uninstall zep-memory@zep-memory
+```
+
+```bash
+claude plugin marketplace remove zep-memory
+```
+
+```bash
+claude plugin marketplace add getzep/zep-context-plugin
+```
+
+```bash
+claude plugin install zep-context@zep-context
+```
+
+```bash
+claude plugin marketplace add getzep/zep-context-plugin
+claude plugin install zep-context@zep-context
 ```
 
 ### Cursor (local test)
@@ -102,11 +124,11 @@ plugin directory, then reload:
 
 ```bash
 mkdir -p ~/.cursor/plugins/local
-ln -s /absolute/path/to/zep-memory-plugin/plugins/zep-memory ~/.cursor/plugins/local/zep-memory
+ln -s /absolute/path/to/zep-context-plugin/plugins/zep-context ~/.cursor/plugins/local/zep-context
 ```
 
 Then in Cursor: **Developer: Reload Window**. Open **Customize** and confirm
-the `zep-memory` skill and MCP server are present. The first Memory MCP call
+the `zep-context` skill and MCP server are present. The first Context MCP call
 should prompt for Zep OAuth (work email → IdP → project).
 
 You can also import this GitHub repository as a Cursor team marketplace;
