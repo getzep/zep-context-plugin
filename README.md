@@ -90,6 +90,11 @@ This repository is the catalog plus that one package. Marketplace entries
 point at `./plugins/zep-context` (Claude and ChatGPT Work) or `plugins/zep-context`
 (Cursor, via `pluginRoot`).
 
+```bash
+claude plugin marketplace add getzep/zep-context-plugin
+claude plugin install zep-context@zep-context
+```
+
 ### Upgrade from zep-memory
 
 Existing installs do not update in place because the plugin and marketplace
@@ -109,11 +114,6 @@ claude plugin marketplace add getzep/zep-context-plugin
 ```
 
 ```bash
-claude plugin install zep-context@zep-context
-```
-
-```bash
-claude plugin marketplace add getzep/zep-context-plugin
 claude plugin install zep-context@zep-context
 ```
 

@@ -14,7 +14,6 @@ All notable changes to the Zep Context plugin.
   `zep-context@zep-context`.
 - Point documentation links at the Context MCP Server docs
   (`https://help.getzep.com/context-mcp-server`).
-
 - Host Claude and ChatGPT Work marketplace catalogs in this repository with
   same-repo plugin sources. Install with
   `claude plugin marketplace add getzep/zep-context-plugin` then
