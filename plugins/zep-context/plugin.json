@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "zep-context",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Use Zep as long-term memory for knowledge work. Bundles a skill plus the Zep Context MCP Server.",
   "author": {
     "name": "Zep",
