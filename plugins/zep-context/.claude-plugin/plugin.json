@@ -1,6 +1,6 @@
 {
   "name": "zep-context",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Use Zep as long-term memory for knowledge work in Claude Desktop Chat and Cowork. Bundles a skill plus the Zep Context MCP Server.",
   "author": {
     "name": "Zep",

@@ -2,6 +2,15 @@
 
 All notable changes to the Zep Context plugin.
 
+## 0.4.0 — 2026-10-15
+
+- Use `graph_uuid` for standalone graphs. The Context MCP Server now uses the
+  V4 API, and `search_graph_in`, `add_memory_to_graph`, and the other `_in`
+  tools take the `graph_uuid` that `list_graphs` or `zep://graphs/directory`
+  returns. The skill no longer tells the agent to pick a `graph_id`.
+- Describe the graph navigation tools `get_subgraph`, `get_node_neighbors`,
+  and `list_episodes`, and their `_in` versions for standalone graphs.
+
 ## 0.3.0 — 2026-10-05
 
 - Rename the plugin from Zep Memory (`zep-memory`) to Zep Context
