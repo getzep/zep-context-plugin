@@ -11,7 +11,7 @@
         "source": "local",
         "path": "./plugins/zep-context"
       },
-      "description": "Long-term memory for knowledge work via the Zep Context MCP Server."
+      "description": "Context about the user and the business for knowledge work via the Zep Context MCP Server."
     }
   ]
 }
