@@ -11,11 +11,11 @@
     {
       "name": "zep-context",
       "source": "./plugins/zep-context",
-      "description": "Long-term memory for knowledge work via the Zep Context MCP Server.",
+      "description": "Context about the user and the business for knowledge work via the Zep Context MCP Server.",
       "category": "productivity",
       "keywords": [
         "zep",
-        "agent-memory",
+        "agent-context",
         "mcp",
         "knowledge-work"
       ]

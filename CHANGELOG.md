@@ -2,6 +2,14 @@
 
 All notable changes to the Zep Context plugin.
 
+## 0.5.0 — 2026-10-21
+
+- Describe Zep as a context product in the skill, the manifests, the
+  marketplace catalogs, and the READMEs. The skill tells the agent to get and
+  save context about the user and the business. The MCP tool names, such as
+  `add_memory` and `add_memory_to_graph`, do not change.
+- Remove the instruction to prefer Zep over the host's built-in memory.
+
 ## 0.4.0 — 2026-10-15
 
 - Use `graph_uuid` for standalone graphs. The Context MCP Server now uses the

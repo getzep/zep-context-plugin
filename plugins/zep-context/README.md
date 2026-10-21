@@ -1,11 +1,12 @@
 # Zep Context
 
-Use Zep as long-term memory for knowledge work in **Cursor**, **Claude Desktop
-Chat**, **Claude Cowork**, and **ChatGPT Work**.
+Use Zep to get and save context about the user and the business for knowledge
+work in **Cursor**, **Claude Desktop Chat**, **Claude Cowork**, and **ChatGPT
+Work**.
 
 Bundles:
 
-- The `zep-context` skill — how to use Zep for user memory, threads, and
+- The `zep-context` skill — how to use Zep for user context, threads, and
   standalone graphs via LLM-mediated Context MCP tool calls
 - The Zep Context MCP Server at `https://api.getzep.com/mcp`
 
@@ -22,8 +23,8 @@ The plugin files (skill, manifests, and MCP config) are also licensed under the
 
 This plugin connects Cursor (and other supported hosts) to Zep’s Context MCP
 Server. You sign in with OAuth. After that, the assistant can search and add to
-your Zep memory — your user graph, and standalone graphs when your project
-enables them. That API and memory data is handled under the Privacy Policy
+your Zep context — your user graph, and standalone graphs when your project
+enables them. That API and context data is handled under the Privacy Policy
 above.
 
 ## Usage
@@ -31,14 +32,14 @@ above.
 Once installed and signed in, ask the assistant to recall or save durable
 context. For example:
 
-- What do you remember about me?
-- Search my Zep memory for relevant context on this topic.
-- Save this to my Zep memory.
+- What context do you have about me?
+- Search my Zep context for this topic.
+- Save this context to Zep.
 
-The skill tells the assistant to prefer Zep over the host’s built-in memory,
-to look up stored context before guessing, and to write standing facts about
-who the user is, their work environment (people, projects, teams), preferences,
-corrections, procedures, decisions, and feedback without waiting to be asked.
+The skill tells the assistant to look up stored context before guessing, and
+to write standing facts about who the user is, their work environment (people,
+projects, teams), preferences, corrections, procedures, decisions, and feedback
+without waiting to be asked.
 Standalone graphs hold project and company-wide knowledge; search those with
 `list_graphs` then `search_graph_in` when the project enables them.
 

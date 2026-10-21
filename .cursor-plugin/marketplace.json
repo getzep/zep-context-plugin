@@ -12,7 +12,7 @@
     {
       "name": "zep-context",
       "source": "zep-context",
-      "description": "Use Zep as long-term memory for knowledge work. Bundles a skill plus the Zep Context MCP Server.",
+      "description": "Use Zep to get and save context about the user and the business for knowledge work. Bundles a skill plus the Zep Context MCP Server.",
       "logo": "assets/logo.png",
       "homepage": "https://help.getzep.com/context-mcp-server",
       "repository": "https://github.com/getzep/zep-context-plugin",
@@ -20,7 +20,7 @@
       "category": "productivity",
       "keywords": [
         "zep",
-        "agent-memory",
+        "agent-context",
         "mcp",
         "knowledge-work"
       ]
