@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "zep-context",
-  "version": "0.5.0",
-  "description": "Use Zep to get and save context about the user and the business for knowledge work. Bundles a skill plus the Zep Context MCP Server.",
+  "version": "0.6.1",
+  "description": "Get context about the user and the business from Zep, and save important context that the user tells the assistant. Bundles a skill and the Zep Context MCP Server.",
   "author": {
     "name": "Zep",
     "url": "https://www.getzep.com"
@@ -10,5 +10,9 @@
   "homepage": "https://help.getzep.com/context-mcp-server",
   "repository": "https://github.com/getzep/zep-context-plugin",
   "license": "Apache-2.0",
-  "keywords": ["zep", "agent-context", "mcp", "knowledge-work"]
+  "keywords": [
+    "zep",
+    "agent-context",
+    "knowledge-work"
+  ]
 }

@@ -16,6 +16,8 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+from validate_skill import validate_skill
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 SEMVER_RE = re.compile(
@@ -270,13 +272,15 @@ def check_single_plugin_root(problems: list[str]) -> None:
             )
     skill = REPO_ROOT / PLUGIN_SKILL
     skills_dir = skill.parent.parent
-    if skills_dir.is_symlink() or skill.is_symlink() or skill.parent.is_symlink():
+    if skills_dir.is_symlink():
         problems.append(
-            f"{PLUGIN_SKILL}: must be a real file, not a symlink "
+            f"{PLUGIN_SKILL}: must be under a real skills directory, not a symlink "
             "(Codex/ChatGPT drop outbound symlinks on install)"
         )
-    elif not skill.is_file():
-        problems.append(f"{PLUGIN_SKILL}: missing")
+    errors, warnings = validate_skill(skill.parent)
+    problems.extend(errors)
+    for warning in warnings:
+        print(f"warning: {warning}", file=sys.stderr)
 
 
 def check_marketplaces(problems: list[str]) -> None:

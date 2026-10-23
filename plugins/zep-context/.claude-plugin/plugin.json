@@ -1,11 +1,13 @@
 {
   "name": "zep-context",
-  "version": "0.5.0",
-  "description": "Use Zep to get and save context about the user and the business for knowledge work in Claude Desktop Chat and Cowork. Bundles a skill plus the Zep Context MCP Server.",
+  "version": "0.6.1",
+  "description": "Get context about the user and the business from Zep, and save important context that the user tells Claude. Bundles a skill and the Zep Context MCP Server.",
   "author": {
     "name": "Zep",
     "url": "https://www.getzep.com"
   },
   "homepage": "https://help.getzep.com/context-mcp-server",
-  "keywords": ["zep", "agent-context", "mcp", "knowledge-work"]
+  "repository": "https://github.com/getzep/zep-context-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["zep", "agent-context", "knowledge-work"]
 }
