@@ -2,6 +2,27 @@
 
 All notable changes to the Zep Context plugin.
 
+## 0.6.1 — 2026-10-23
+
+- The skill tells the agent to follow `next_cursor` from `list_graphs` until the
+  last page.
+
+## 0.6.0 — 2026-10-22
+
+- The skill replaces its first-use lookup rule with request-based lookups. The
+  previous skill instructed the agent to call `get_user_summary` the first
+  time that it used the skill in a conversation. The new description
+  identifies requests that need Zep and tells the agent to read the skill
+  before it calls a Zep Context tool. The skill body maps each request type to
+  the tools it needs.
+- The plugin descriptions, the plugin README, and the marketplace catalog
+  descriptions now match the skill. The Codex manifest now includes the
+  repository, license, support URL, privacy policy URL, terms of service URL,
+  and icons.
+- `scripts/plugin_manifests.py --check` validates the skill file against the
+  Agent Skills rules. A description that is longer than 200 characters gives a
+  warning only.
+
 ## 0.5.0 — 2026-10-21
 
 - Describe Zep as a context product in the skill, the manifests, the

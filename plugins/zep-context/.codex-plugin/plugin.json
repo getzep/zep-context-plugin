@@ -1,27 +1,34 @@
 {
   "name": "zep-context",
-  "version": "0.5.0",
-  "description": "Use Zep to get and save context about the user and the business for knowledge work in ChatGPT Work. Bundles a skill plus the Zep Context MCP Server.",
+  "version": "0.6.1",
+  "description": "Get context about the user and the business from Zep, and save important context that the user tells the assistant. Bundles a skill and the Zep Context MCP Server.",
   "author": {
     "name": "Zep",
     "url": "https://www.getzep.com"
   },
   "homepage": "https://help.getzep.com/context-mcp-server",
-  "keywords": ["zep", "agent-context", "mcp", "knowledge-work"],
+  "repository": "https://github.com/getzep/zep-context-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["zep", "agent-context", "knowledge-work"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Zep Context",
-    "shortDescription": "Context about the user and the business for knowledge work, backed by Zep.",
-    "longDescription": "Connect ChatGPT Work to your Zep context so it can search and, when allowed, add to your user graph — and use standalone graphs when your project enables them.",
+    "shortDescription": "Your work context from Zep",
+    "longDescription": "Zep Context connects ChatGPT and Codex to your Zep account. The assistant calls Zep only when a request needs it. When a request depends on you, the assistant reads your Zep user summary or searches your user graph. When a request asks about your organization's own knowledge, it finds the matching standalone graph and searches it. When you ask it to save context, or tell it a lasting fact or preference about yourself or your work, it saves a short fact to Zep and tells you what it saved. It does not save files, tool results, or full conversations. You sign in to Zep with OAuth. You need a Zep account with a project that has the Context MCP Server enabled. Standalone graphs are available only when your project has them.",
     "developerName": "Zep",
     "category": "Productivity",
-    "capabilities": ["Interactive"],
+    "capabilities": ["Interactive", "Read", "Write"],
     "websiteURL": "https://help.getzep.com/context-mcp-server",
+    "supportURL": "https://github.com/getzep/zep-context-plugin/issues",
+    "privacyPolicyURL": "https://www.getzep.com/legal/privacy/",
+    "termsOfServiceURL": "https://www.getzep.com/legal/terms/",
     "defaultPrompt": [
       "What context do you have about me?",
       "Search my Zep context for this topic.",
       "Save this context to Zep."
-    ]
+    ],
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png"
   }
 }

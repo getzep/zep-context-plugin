@@ -11,7 +11,7 @@
         "source": "local",
         "path": "./plugins/zep-context"
       },
-      "description": "Context about the user and the business for knowledge work via the Zep Context MCP Server."
+      "description": "Get context about the user and the business from Zep, and save important context that the user tells the assistant. Bundles a skill and the Zep Context MCP Server."
     }
   ]
 }

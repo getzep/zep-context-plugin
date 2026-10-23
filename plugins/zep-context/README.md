@@ -1,60 +1,81 @@
 # Zep Context
 
-Use Zep to get and save context about the user and the business for knowledge
-work in **Cursor**, **Claude Desktop Chat**, **Claude Cowork**, and **ChatGPT
-Work**.
+Zep Context gives the assistant context about you and your business from your
+Zep account. It works in **Claude Code**, **Claude Desktop Chat**, **Claude
+Cowork**, **Codex**, **ChatGPT Work**, and **Cursor**.
 
-Bundles:
+The plugin contains:
 
-- The `zep-context` skill — how to use Zep for user context, threads, and
-  standalone graphs via LLM-mediated Context MCP tool calls
-- The Zep Context MCP Server at `https://api.getzep.com/mcp`
+- The `zep-context` skill. It tells the assistant when to get context from Zep
+  and when to save context to Zep.
+- The Zep Context MCP Server at `https://api.getzep.com/mcp`.
 
 ## Terms and privacy
 
-**Read these before installing or using this plugin.** They are the terms of
-service and privacy policy for this plugin.
+**Read these before you install or use this plugin.** They are the terms of
+service and the privacy policy for this plugin and for the data that it sends
+to Zep.
 
 - **[Terms of Service](https://www.getzep.com/legal/terms/)**
 - **[Privacy Policy](https://www.getzep.com/legal/privacy/)**
 
-The plugin files (skill, manifests, and MCP config) are also licensed under the
-[Apache License 2.0](../../LICENSE).
+The plugin files (skill, manifests, and MCP configuration) are licensed
+under the [Apache License 2.0](../../LICENSE).
 
-This plugin connects Cursor (and other supported hosts) to Zep’s Context MCP
-Server. You sign in with OAuth. After that, the assistant can search and add to
-your Zep context — your user graph, and standalone graphs when your project
-enables them. That API and context data is handled under the Privacy Policy
-above.
+## What the plugin does
+
+| When | Zep tool calls | Data sent to Zep | Data saved in Zep |
+|---|---|---|---|
+| A request depends on you | `get_user_summary`, `search_graph` | A short search query | None |
+| A request asks about your organization's own knowledge | `list_graphs`, `search_graph_in` | A short search query | None |
+| You ask to save context, or you tell the assistant a lasting fact or preference about yourself or your work | `add_memory` | One short fact in your words | That fact, in your user graph |
+| You ask to add a fact to a project or company graph | `add_memory_to_graph` | One short fact | That fact, in the selected standalone graph |
+
+Each row is one kind of action. The assistant tells you in its reply each time
+it saves a fact. The assistant does not save credentials, payment data,
+government ID numbers, health data, files, tool results, or full conversations.
+To stop saves, tell the assistant not to save context. To change a saved fact,
+tell the assistant the correction. Zep Context does not replace the host's
+built-in memory or other tools.
 
 ## Usage
 
-Once installed and signed in, ask the assistant to recall or save durable
-context. For example:
+After you install the plugin and sign in, try these prompts:
 
 - What context do you have about me?
 - Search my Zep context for this topic.
-- Save this context to Zep.
+- Save this context to Zep: I prefer short answers with a summary first.
+- What is in our company handbook graph about travel expenses?
 
-The skill tells the assistant to look up stored context before guessing, and
-to write standing facts about who the user is, their work environment (people,
-projects, teams), preferences, corrections, procedures, decisions, and feedback
-without waiting to be asked.
-Standalone graphs hold project and company-wide knowledge; search those with
-`list_graphs` then `search_graph_in` when the project enables them.
+The assistant calls Zep only when a request needs it. It does not call Zep at
+the start of a session or for requests that a general answer completes.
+Standalone graphs hold project and company-wide knowledge. The assistant
+searches them with `list_graphs` and then `search_graph_in` when the project
+enables them.
 
-Install and product docs: [Context MCP Server](https://help.getzep.com/context-mcp-server).
+Install and product documentation:
+[Context MCP Server](https://help.getzep.com/context-mcp-server).
 
 ## Configuration
 
-No API keys, plugin variables, or other secrets belong in this package. Auth is
-client-managed OAuth against `https://api.getzep.com/mcp`.
+No API keys, plugin variables, or other secrets belong in this package. The
+host manages OAuth sign-in to `https://api.getzep.com/mcp`.
 
-The first Context MCP call should prompt for Zep sign-in (work email → identity
-provider → project). You need a Zep account whose project has Context MCP
-enabled.
+The first Context MCP call starts the Zep sign-in (work email, then identity
+provider, then project). You need a Zep account with a project that has the
+Context MCP Server enabled. Standalone graphs are available only when your
+project has them.
+
+## Troubleshooting
+
+- The assistant says that Zep tools are not available: make sure that the
+  plugin is enabled, then sign in to Zep again from the host's MCP settings.
+- The assistant finds no context: make sure that you signed in to the correct
+  Zep project.
+- The assistant cannot find a standalone graph: make sure that your project
+  has standalone graphs and that your account can read them.
 
 ## Support
 
-- Docs: [Context MCP Server](https://help.getzep.com/context-mcp-server)
+- Documentation: [Context MCP Server](https://help.getzep.com/context-mcp-server)
 - Issues: [getzep/zep-context-plugin](https://github.com/getzep/zep-context-plugin/issues)
